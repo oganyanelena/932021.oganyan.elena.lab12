@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ asset('styles/base.css') }}">
+    <title>Task 11</title>
+
+</head>
+<body>
+<header>
+    <h3 class="h1-header">Backend2</h3>
+    <a class="button-header" href="">Home</a>
+</header>
+<div class="content">
+    <h1 class="content-header">Calc Service Demonstration</h1>
+    <ul>
+        <li><a href="{{ path('show_calc', {mode: 'ManualParsingInSingleAction'}) }}">Manual parsing in single action</a></li>
+        <li><a href="{{ path('show_calc', {mode: 'ManualParsingInSeparateActions'}) }}">Manual parsing in separate actions</a></li>
+        <li><a href="{{ path('show_calc', {mode: 'ModelBindingInParameters'}) }}">Model binding (parameters)</a></li>
+        <li><a href="{{ path('show_calc', {mode: 'ModelBindingSeparateModel'}) }}">Model binding (separate model)</a></li>
+    </ul>
+</div>
+<div class="line"></div>
+<footer>© 2023 - Backend2</footer>
+</body>
+</html>

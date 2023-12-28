@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ asset('styles/base.css') }}">
+    <title>Task 11</title>
+
+</head>
+<body>
+<header>
+    <h3 class="h1-header">Backend2</h3>
+    <a class="button-header" href="{{ path('show_home') }}">Home</a>
+</header>
+<div class="content">
+    <h1 class="content-header">{{ mode }}</h1>
+    <div>
+        {% if resultDTO is null %}
+            {{ form_start(form, {'method': 'POST'}) }}
+            {% if form_errors(form) is not null %}
+                <div>
+                    {% for error in form.vars.errors %}
+                        <span class="content-header">{{ error.message }}</span>
+                    {% endfor %}
+                </div>
+            {% endif %}
+            <div>
+                {{ form_label(form.firstValue) }}
+                <div>
+                    {{ form_widget(form.firstValue, {'attr': {
+                        'class': 'first-input'
+                    }}) }}
+                </div>
+                {% if form_errors(form.firstValue) != null %}
+                    <div>
+                        {% for error in form.firstValue.vars.errors %}
+                            <span class="content-header">{{ error.message }}</span>
+                        {% endfor %}
+                    </div>
+                {% endif %}
+            </div>
+            <div>
+                {{ form_label(form.operation) }}
+                <div>
+                    {{ form_widget(form.operation, {'attr': {
+                        'class': 'sign'
+                    }}) }}
+                </div>
+                {% if form_errors(form.operation) != null %}
+                    <div>
+                        {% for error in form.operation.vars.errors %}
+                            <span class="content-header">{{ error.message }}</span>
+                        {% endfor %}
+                    </div>
+                {% endif %}
+            </div>
+            <div>
+                {{ form_label(form.secondValue) }}
+                <div>
+                    {{ form_widget(form.secondValue, {'attr': {
+                        'class': 'second-input'
+                    }}) }}
+                </div>
+                {% if form_errors(form.secondValue) != null %}
+                    <div>
+                        {% for error in form.secondValue.vars.errors %}
+                            <span class="content-header">{{ error.message }}</span>
+                        {% endfor %}
+                    </div>
+                {% endif %}
+            </div>
+            <button class="submit" type="submit">Submit</button>
+            {{ form_end(form) }}
+        {% else %}
+            <h1 class="main-header">Result</h1>
+            <h2 class="main-header">{{ resultDTO.firstValue }} {{ resultDTO.operationSymbol }} {{ resultDTO.secondValue }} = {{ resultDTO.result }}</h2>
+        {% endif %}
+    </div>
+</div>
+<div class="line"></div>
+<footer>© 2023 - Backend2</footer>
+</body>
+</html>
